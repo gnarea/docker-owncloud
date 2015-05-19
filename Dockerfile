@@ -10,3 +10,4 @@ RUN apt-get update && \
     docker-php-ext-install gd json mysql intl mcrypt
 
 # TODO: Install imagick extension!
+# TODO: See similar app: https://github.com/docker-library/wordpress/blob/master/fpm/Dockerfile
