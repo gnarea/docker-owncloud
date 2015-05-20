@@ -1,8 +1,6 @@
 FROM php:5.6-fpm
 MAINTAINER Gustavo Narea "me@gustavonarea.net"
 
-VOLUME /var/www/owncloud/data
-
 RUN apt-get update && \
     apt-get install --no-install-recommends -y libpng12-dev libjpeg-dev libicu-dev g++ libmcrypt-dev libmagickwand-dev && \
     rm -rf /var/lib/apt/lists/* && \
@@ -10,5 +8,13 @@ RUN apt-get update && \
     docker-php-ext-install gd json mysql intl mcrypt && \
     pecl install imagick && \
     echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
+
+VOLUME /var/www/owncloud/data
+
+ENV OWNCLOUD_VERSION 8.0.3
+
+RUN curl --silent --show-error --location https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
+    tar --extract --bzip2 --directory /var/www --verbose
+RUN chown -R www-data:www-data /var/www/owncloud
 
 # TODO: See similar app: https://github.com/docker-library/wordpress/blob/master/fpm/Dockerfile
