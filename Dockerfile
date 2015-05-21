@@ -23,7 +23,9 @@ VOLUME /var/www/owncloud/data
 ENV OWNCLOUD_VERSION 8.0.3
 
 RUN curl --silent --show-error --location https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
-    tar --extract --bzip2 --directory /var/www --verbose
-RUN chown -R www-data:www-data /var/www/owncloud
+    tar --extract --bzip2 --directory /var/www --owner=www-data --group=www-data --verbose
 
-# TODO: See similar app: https://github.com/docker-library/wordpress/blob/master/fpm/Dockerfile
+COPY docker-entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["php-fpm"]
