@@ -20,10 +20,12 @@ RUN apt-get update && \
 
 ENV OWNCLOUD_VERSION 8.0.3
 
-RUN curl --silent --show-error --location https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
-    tar --extract --bzip2 --directory /var/www --owner=www-data --group=www-data --verbose
+RUN (curl --silent --show-error --location https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
+    tar --extract --bzip2 --directory /tmp --owner=www-data --group=www-data --verbose ) && \
+    rm -rf /var/www/html && \
+    mv /tmp/owncloud /var/www/html
 
-VOLUME /var/www/owncloud
+VOLUME /var/www/html
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
