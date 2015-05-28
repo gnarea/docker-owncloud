@@ -18,14 +18,11 @@ RUN apt-get update && \
     pecl install imagick && \
     echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
 
+VOLUME /var/www/html/data
+
 ENV OWNCLOUD_VERSION 8.0.3
-
-    tar --extract --bzip2 --directory /tmp --owner=www-data --group=www-data --verbose ) && \
-    rm -rf /var/www/html && \
-    mv /tmp/owncloud /var/www/html
-
-VOLUME /var/www/html
-RUN (curl --silent --show-error https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
+RUN curl --silent --show-error https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
+    tar --extract --bzip2 --strip-components 1 --directory /var/www/html --verbose
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
