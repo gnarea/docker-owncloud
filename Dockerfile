@@ -1,4 +1,4 @@
-FROM php:5.6-fpm
+FROM php:5.6-apache
 MAINTAINER Gustavo Narea "me@gustavonarea.net"
 
 RUN apt-get update && \
@@ -30,4 +30,4 @@ VOLUME /var/www/html
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]
