@@ -20,7 +20,7 @@ RUN apt-get update && \
 
 VOLUME /var/www/html/data
 
-ENV OWNCLOUD_VERSION 8.0.3
+ENV OWNCLOUD_VERSION 8.0.4
 RUN curl --silent --show-error https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | \
     tar --extract --bzip2 --strip-components 1 --directory /var/www/html --verbose
 
