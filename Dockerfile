@@ -1,25 +1,13 @@
 FROM gnarea/alpine-php-fpm
 
-RUN \
-    apk add --update \
-        curl \
-        tar \
-        libpng-dev \
-        libjpeg-turbo-dev
+ENV \
+    OWNCLOUD_VERSION="8.2.2" \
+    OWNCLOUD_DATA_PATH="/var/opt/web-app"
 
-#        libicu-dev \
-#        g++ \
-#        libmcrypt-dev \
-#        imagemagick \
-#        libmagickwand-dev \
-#        bzip2 \
-#        && \
-#    rm -rf /var/lib/apt/lists/* && \
-#    docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr && \
-#    docker-php-ext-install gd intl mcrypt mbstring posix zip mysql && \
-#    pecl install imagick && \
-#    echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
+COPY build /tmp
+RUN /tmp/build && rm /tmp/build
 
-ENV OWNCLOUD_VERSION 8.0.4
-RUN curl --silent --show-error "https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" | \
-    tar --extract --bzip2 --strip-components 1 --directory /var/www/html --verbose
+COPY config.php /opt/web-app/config/config.php
+RUN chown www-data:www-data /opt/web-app/config/config.php
+
+VOLUME "${OWNCLOUD_DATA_PATH}"

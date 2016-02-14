@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -o nounset
+set -o errexit
+set -o pipefail
+
+
+# ==== Constants and functions
+
+
+BUILD_DEPS="curl tar"
+RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-xml \
+    php-zlib php-zip"
+DB_RUNTIME_DEPS="php-mysql php-pdo_mysql"
+
+
+OWNCLOUD_DIST_PATH="/opt/web-app"
+
+
+# ===== Main
+
+
+apk add --no-cache ${BUILD_DEPS} ${RUNTIME_DEPS} ${DB_RUNTIME_DEPS}
+
+mkdir -p "${OWNCLOUD_DIST_PATH}"
+curl --silent --show-error "https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" | \
+    tar --extract --bzip2 --strip-components 1 --directory "${OWNCLOUD_DIST_PATH}" --verbose
+
+mkdir -p "${OWNCLOUD_DATA_PATH}"
+chown www-data:www-data "${OWNCLOUD_DATA_PATH}"
+
+apk del ${BUILD_DEPS}

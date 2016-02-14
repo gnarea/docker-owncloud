@@ -1,0 +1,25 @@
+# Docker Compose project for development
+
+version: "2"
+services:
+  owncloud:
+    build: "."
+    volumes:
+      - "/opt/web-app"
+    links:
+      - "db"
+    user: "www-data"
+  app-server:
+    image: "gnarea/alpine-php-app-server"
+    links:
+      - "owncloud:php-fpm"
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes_from:
+      - "owncloud"
+  db:
+    image: "mysql"
+    environment:
+      - "MYSQL_DATABASE=owncloud"
+      - "MYSQL_ROOT_PASSWORD=pass"
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
