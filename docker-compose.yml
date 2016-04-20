@@ -8,9 +8,9 @@ services:
       - "/opt/web-app"
     links:
       - "db"
-    user: "www-data"
   app-server:
-    image: "gnarea/alpine-php-app-server"
+    build: "."
+    command: "nginx"
     links:
       - "owncloud:php-fpm"
     ports:

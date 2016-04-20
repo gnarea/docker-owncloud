@@ -8,7 +8,7 @@ set -o pipefail
 # ==== Constants and functions
 
 
-BUILD_DEPS="curl tar"
+BUILD_DEPS="tar"
 RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-xml \
     php-zlib php-zip"
 DB_RUNTIME_DEPS="php-mysql php-pdo_mysql"
@@ -29,4 +29,4 @@ curl --silent --show-error "https://download.owncloud.org/community/owncloud-${O
 mkdir -p "${OWNCLOUD_DATA_PATH}"
 chown www-data:www-data "${OWNCLOUD_DATA_PATH}"
 
-apk del ${BUILD_DEPS}
+apk del --force ${BUILD_DEPS}
