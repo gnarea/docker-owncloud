@@ -10,7 +10,7 @@ set -o pipefail
 
 BUILD_DEPS="tar"
 RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-xml \
-    php-zlib php-zip"
+    php-xmlreader php-zlib php-zip"
 DB_RUNTIME_DEPS="php-mysql php-pdo_mysql"
 
 
@@ -25,6 +25,9 @@ apk add --no-cache ${BUILD_DEPS} ${RUNTIME_DEPS} ${DB_RUNTIME_DEPS}
 mkdir -p "${OWNCLOUD_DIST_PATH}"
 curl --silent --show-error "https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" | \
     tar --extract --bzip2 --strip-components 1 --directory "${OWNCLOUD_DIST_PATH}" --verbose
+chown --recursive www-data:www-data "${OWNCLOUD_DIST_PATH}"
+find "${OWNCLOUD_DIST_PATH}" -type f -print0 | xargs -0 chmod 0640
+find "${OWNCLOUD_DIST_PATH}" -type d -print0 | xargs -0 chmod 0750
 
 mkdir -p "${OWNCLOUD_DATA_PATH}"
 chown www-data:www-data "${OWNCLOUD_DATA_PATH}"

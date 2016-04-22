@@ -1,7 +1,7 @@
 FROM gnarea/alpine-php-fpm
 
 ENV \
-    OWNCLOUD_VERSION="8.2.2" \
+    OWNCLOUD_VERSION="9.0.1" \
     OWNCLOUD_DATA_PATH="/var/opt/web-app"
 
 COPY build /tmp
