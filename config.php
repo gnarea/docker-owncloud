@@ -5,6 +5,10 @@ $CONFIG = array(
     'datadirectory' => getenv('OWNCLOUD_DATA_PATH'),
 );
 
+if (getenv('OWNCLOUD_SECRET')) {
+    $CONFIG['secret'] = getenv('OWNCLOUD_SECRET');
+}
+
 if (getenv('OWNCLOUD_PASSWORD_SALT')) {
     $CONFIG['passwordsalt'] = getenv('OWNCLOUD_PASSWORD_SALT');
 }
