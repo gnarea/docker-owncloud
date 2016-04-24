@@ -14,6 +14,7 @@ RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-xml \
 DB_RUNTIME_DEPS="php-mysql php-pdo_mysql"
 
 
+OWNCLOUD_ARCHIVE_URL="https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2"
 OWNCLOUD_DIST_PATH="/opt/web-app"
 
 
@@ -23,7 +24,7 @@ OWNCLOUD_DIST_PATH="/opt/web-app"
 apk add --no-cache ${BUILD_DEPS} ${RUNTIME_DEPS} ${DB_RUNTIME_DEPS}
 
 mkdir -p "${OWNCLOUD_DIST_PATH}"
-curl --silent --show-error "https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" | \
+curl --silent --show-error "${OWNCLOUD_ARCHIVE_URL}" | \
     tar --extract --bzip2 --strip-components 1 --directory "${OWNCLOUD_DIST_PATH}" --verbose
 chown --recursive www-data:www-data "${OWNCLOUD_DIST_PATH}"
 find "${OWNCLOUD_DIST_PATH}" -type f -print0 | xargs -0 chmod 0640
