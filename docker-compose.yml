@@ -8,6 +8,8 @@ services:
       - "/opt/web-app"
     links:
       - "db"
+    environment:
+      OWNCLOUD_PASSWORD_SALT: "salty"
   app-server:
     build: "."
     command: "nginx"
