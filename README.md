@@ -4,6 +4,7 @@
 
 Customisable:
 
+- `DEBUG`.
 - `OWNCLOUD_DATA_PATH`.
 - `OWNCLOUD_SECRET`.
 - `OWNCLOUD_PASSWORD_SALT`.

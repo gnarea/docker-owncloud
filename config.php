@@ -1,9 +1,12 @@
 <?php
 
 $CONFIG = array(
+    'debug' => (bool) getenv('DEBUG'),
     'logfile' => '/proc/self/fd/2',
     'datadirectory' => getenv('OWNCLOUD_DATA_PATH'),
 );
+
+$CONFIG['loglevel'] = $CONFIG['debug'] ? 0 : 2;
 
 if (getenv('OWNCLOUD_SECRET')) {
     $CONFIG['secret'] = getenv('OWNCLOUD_SECRET');
