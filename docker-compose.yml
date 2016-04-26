@@ -4,8 +4,6 @@ version: "2"
 services:
   owncloud:
     build: "."
-    volumes:
-      - "/opt/web-app"
     links:
       - "db"
     environment:
@@ -17,8 +15,6 @@ services:
       - "owncloud:php-fpm"
     ports:
       - "127.0.0.1:8080:80"
-    volumes_from:
-      - "owncloud"
   db:
     image: "mysql"
     environment:
