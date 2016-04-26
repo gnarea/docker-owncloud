@@ -7,6 +7,7 @@ services:
     links:
       - "db"
     environment:
+      DEBUG: "1"
       OWNCLOUD_PASSWORD_SALT: "salty"
   app-server:
     build: "."
