@@ -18,6 +18,6 @@ services:
   db:
     image: "mysql"
     environment:
-      - "MYSQL_DATABASE=owncloud"
-      - "MYSQL_ROOT_PASSWORD=pass"
-      - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
+      MYSQL_DATABASE: "owncloud"
+      MYSQL_ROOT_PASSWORD: "pass"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
