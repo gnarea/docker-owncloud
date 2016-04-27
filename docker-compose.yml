@@ -8,7 +8,14 @@ services:
       - "db"
     environment:
       DEBUG: "1"
+      OWNCLOUD_DB_TYPE: "mysql"
+      OWNCLOUD_DB_HOST: "db"
+      OWNCLOUD_DB_USER: "root"
+      OWNCLOUD_DB_PASSWORD: "pass"
+      OWNCLOUD_DB_NAME: "owncloud"
       OWNCLOUD_PASSWORD_SALT: "salty"
+      OWNCLOUD_ADMIN_USER: "admin1"
+      OWNCLOUD_ADMIN_PASS: "pass"
   app-server:
     build: "."
     command: "nginx"
