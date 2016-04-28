@@ -14,7 +14,7 @@ services:
       OWNCLOUD_DB_PASSWORD: "pass"
       OWNCLOUD_DB_NAME: "owncloud"
       OWNCLOUD_PASSWORD_SALT: "salty"
-      OWNCLOUD_ADMIN_USER: "admin1"
+      OWNCLOUD_ADMIN_USER: "admin"
       OWNCLOUD_ADMIN_PASS: "pass"
   app-server:
     build: "."
