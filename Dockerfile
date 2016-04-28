@@ -7,7 +7,7 @@ ENV \
 COPY build /tmp
 RUN /tmp/build && rm /tmp/build
 
-COPY autoconfig.php /opt/web-app/config/autoconfig.php
+COPY autoconfig.php docker.config.php /opt/web-app/config/
 RUN chown www-data:www-data /opt/web-app/config/autoconfig.php
 
 VOLUME "${OWNCLOUD_DATA_PATH}"

@@ -17,3 +17,5 @@ Customisable:
 - `OWNCLOUD_DB_TABLE_PREFIX` (default: empty string).
 - `OWNCLOUD_ADMIN_USER`.
 - `OWNCLOUD_ADMIN_PASS`.
+
+More options can be set by adding configuration files to `/opt/web-app/config/`.
