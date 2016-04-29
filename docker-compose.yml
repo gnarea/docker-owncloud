@@ -16,6 +16,12 @@ services:
       OWNCLOUD_PASSWORD_SALT: "salty"
       OWNCLOUD_ADMIN_USER: "admin"
       OWNCLOUD_ADMIN_PASS: "pass"
+      OWNCLOUD_SMTP_HOST: "smtp.gmail.com"
+      OWNCLOUD_SMTP_PORT: "587"
+      OWNCLOUD_SMTP_ENCRYPTION: "tls"
+      OWNCLOUD_SMTP_AUTHN_TYPE: "LOGIN"
+      OWNCLOUD_SMTP_AUTHN_USER: "USER@gmail.com"
+      OWNCLOUD_SMTP_AUTHN_PASSWORD: "PASS"
   app-server:
     build: "."
     command: "nginx"

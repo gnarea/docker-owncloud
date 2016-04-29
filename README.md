@@ -15,6 +15,12 @@ Customisable:
 - `OWNCLOUD_DB_PASSWORD`.
 - `OWNCLOUD_DB_NAME`.
 - `OWNCLOUD_DB_TABLE_PREFIX` (default: empty string).
+- `OWNCLOUD_SMTP_HOST`.
+- `OWNCLOUD_SMTP_PORT`.
+- `OWNCLOUD_SMTP_ENCRYPTION` (default: empty string; also valid: "tls" or "ssl").
+- `OWNCLOUD_SMTP_AUTHN_TYPE` (default: "LOGIN"; also valid: "PLAIN").
+- `OWNCLOUD_SMTP_AUTHN_USER`.
+- `OWNCLOUD_SMTP_AUTHN_PASSWORD`.
 - `OWNCLOUD_ADMIN_USER`.
 - `OWNCLOUD_ADMIN_PASS`.
 

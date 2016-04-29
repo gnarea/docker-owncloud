@@ -16,6 +16,15 @@ $CONFIG = array(
     'dbname' => getenv('OWNCLOUD_DB_NAME'),
     'dbtableprefix' => getenv('OWNCLOUD_DB_TABLE_PREFIX') ?: "",
 
+    'mail_smtpmode' => "smtp",
+    'mail_smtphost' => getenv('OWNCLOUD_SMTP_HOST'),
+    'mail_smtpport' => getenv('OWNCLOUD_SMTP_PORT'),
+    'mail_smtpsecure' => getenv('OWNCLOUD_SMTP_ENCRYPTION') ?: "",
+    'mail_smtpauth' => (bool) getenv('OWNCLOUD_SMTP_AUTHN_USER'),
+    'mail_smtpauthtype' => getenv('OWNCLOUD_SMTP_AUTHN_TYPE') ?: "LOGIN",
+    'mail_smtpname' => getenv('OWNCLOUD_SMTP_AUTHN_USER'),
+    'mail_smtppassword' => getenv('OWNCLOUD_SMTP_AUTHN_PASSWORD'),
+
     'adminlogin' => getenv('OWNCLOUD_ADMIN_USER'),
     'adminpass' => getenv('OWNCLOUD_ADMIN_PASS'),
 );

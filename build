@@ -9,8 +9,8 @@ set -o pipefail
 
 
 BUILD_DEPS="tar"
-RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-xml \
-    php-xmlreader php-zlib php-zip"
+RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-openssl \
+    php-xml php-xmlreader php-zlib php-zip"
 DB_RUNTIME_DEPS="php-mysql php-pdo_mysql"
 
 
