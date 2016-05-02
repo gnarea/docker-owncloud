@@ -24,7 +24,7 @@ services:
       OWNCLOUD_SMTP_AUTHN_PASSWORD: "PASS"
   app-server:
     build: "."
-    command: "nginx"
+    command: "nginx-wrapper"
     links:
       - "owncloud:php-fpm"
     ports:
