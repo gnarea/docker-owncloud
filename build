@@ -8,10 +8,10 @@ set -o pipefail
 # ==== Constants and functions
 
 
-BUILD_DEPS="tar"
-RUNTIME_DEPS="php-ctype php-curl php-dom php-gd php-iconv php-json php-openssl \
-    php-xml php-xmlreader php-zlib php-zip"
-DB_RUNTIME_DEPS="php-mysql php-pdo_mysql"
+BUILD_DEPS="curl tar"
+RUNTIME_DEPS="php5-ctype php5-curl php5-dom php5-gd php5-iconv php5-json \
+    php5-openssl php5-xml php5-xmlreader php5-zlib php5-zip"
+DB_RUNTIME_DEPS="php5-mysql php5-pdo_mysql"
 
 
 OWNCLOUD_ARCHIVE_URL="https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2"
